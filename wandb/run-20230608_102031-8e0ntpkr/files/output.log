@@ -1,0 +1,59 @@
+device mps
+训练集路径 fruit81_split/train
+测试集路径 fruit81_split/val
+训练集图像数量 11220
+类别个数 81
+各类别名称 ['人参果', '佛手瓜', '哈密瓜', '圣女果', '山楂', '山竹', '无花果', '木瓜', '李子', '杏', '杨桃', '杨梅', '枇杷', '枣', '柚子', '柠檬', '柿子', '树莓', '桂圆', '桑葚', '梨', '椰子', '榴莲', '樱桃', '橘子', '毛丹', '水蜜桃', '沃柑', '沙果', '沙棘', '油桃', '牛油果', '猕猴桃', '甘蔗', '甜瓜-伊丽莎白', '甜瓜-白', '甜瓜-绿', '甜瓜-金', '番石榴-百', '番石榴-红', '白兰瓜', '白心火龙果', '白萝卜', '百香果', '石榴', '砂糖橘', '粑粑柑', '红心火龙果', '红苹果', '羊奶果', '羊角蜜', '胡萝卜', '脐橙', '腰果', '芒果', '芦柑', '草莓', '荔枝', '莲雾', '菠萝', '菠萝莓', '菠萝蜜', '葡萄-白', '葡萄-红', '蓝莓', '蛇皮果', '蟠桃', '血橙', '西柚', '西梅', '西瓜', '西红柿', '车厘子', '酸角', '金桔', '青柠', '青苹果', '香橼', '香蕉', '黄桃', '黑莓']
+测试集图像数量 2768
+类别个数 81
+各类别名称 ['人参果', '佛手瓜', '哈密瓜', '圣女果', '山楂', '山竹', '无花果', '木瓜', '李子', '杏', '杨桃', '杨梅', '枇杷', '枣', '柚子', '柠檬', '柿子', '树莓', '桂圆', '桑葚', '梨', '椰子', '榴莲', '樱桃', '橘子', '毛丹', '水蜜桃', '沃柑', '沙果', '沙棘', '油桃', '牛油果', '猕猴桃', '甘蔗', '甜瓜-伊丽莎白', '甜瓜-白', '甜瓜-绿', '甜瓜-金', '番石榴-百', '番石榴-红', '白兰瓜', '白心火龙果', '白萝卜', '百香果', '石榴', '砂糖橘', '粑粑柑', '红心火龙果', '红苹果', '羊奶果', '羊角蜜', '胡萝卜', '脐橙', '腰果', '芒果', '芦柑', '草莓', '荔枝', '莲雾', '菠萝', '菠萝莓', '菠萝蜜', '葡萄-白', '葡萄-红', '蓝莓', '蛇皮果', '蟠桃', '血橙', '西柚', '西梅', '西瓜', '西红柿', '车厘子', '酸角', '金桔', '青柠', '青苹果', '香橼', '香蕉', '黄桃', '黑莓']
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/Users/aspiriner/opt/anaconda3/envs/ai01/lib/python3.8/multiprocessing/spawn.py", line 116, in spawn_main
+    exitcode = _main(fd, parent_sentinel)
+  File "/Users/aspiriner/opt/anaconda3/envs/ai01/lib/python3.8/multiprocessing/spawn.py", line 125, in _main
+    prepare(preparation_data)
+  File "/Users/aspiriner/opt/anaconda3/envs/ai01/lib/python3.8/multiprocessing/spawn.py", line 236, in prepare
+    _fixup_main_from_path(data['init_main_from_path'])
+  File "/Users/aspiriner/opt/anaconda3/envs/ai01/lib/python3.8/multiprocessing/spawn.py", line 287, in _fixup_main_from_path
+    main_content = runpy.run_path(main_path,
+  File "/Users/aspiriner/opt/anaconda3/envs/ai01/lib/python3.8/runpy.py", line 265, in run_path
+    return _run_module_code(code, init_globals, run_name,
+  File "/Users/aspiriner/opt/anaconda3/envs/ai01/lib/python3.8/runpy.py", line 97, in _run_module_code
+    _run_code(code, mod_globals, init_globals,
+  File "/Users/aspiriner/opt/anaconda3/envs/ai01/lib/python3.8/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/Users/aspiriner/PycharmProjects/pythonProject1/TransforLearningPlus.py", line 205, in <module>
+    images, labels = next(iter(train_loader))
+  File "/Users/aspiriner/opt/anaconda3/envs/ai01/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 441, in __iter__
+    return self._get_iterator()
+  File "/Users/aspiriner/opt/anaconda3/envs/ai01/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 388, in _get_iterator
+    return _MultiProcessingDataLoaderIter(self)
+  File "/Users/aspiriner/opt/anaconda3/envs/ai01/lib/python3.8/site-packages/torch/utils/data/dataloader.py", line 1042, in __init__
+    w.start()
+  File "/Users/aspiriner/opt/anaconda3/envs/ai01/lib/python3.8/multiprocessing/process.py", line 121, in start
+    self._popen = self._Popen(self)
+  File "/Users/aspiriner/opt/anaconda3/envs/ai01/lib/python3.8/multiprocessing/context.py", line 224, in _Popen
+    return _default_context.get_context().Process._Popen(process_obj)
+  File "/Users/aspiriner/opt/anaconda3/envs/ai01/lib/python3.8/multiprocessing/context.py", line 284, in _Popen
+    return Popen(process_obj)
+  File "/Users/aspiriner/opt/anaconda3/envs/ai01/lib/python3.8/multiprocessing/popen_spawn_posix.py", line 32, in __init__
+    super().__init__(process_obj)
+  File "/Users/aspiriner/opt/anaconda3/envs/ai01/lib/python3.8/multiprocessing/popen_fork.py", line 19, in __init__
+    self._launch(process_obj)
+  File "/Users/aspiriner/opt/anaconda3/envs/ai01/lib/python3.8/multiprocessing/popen_spawn_posix.py", line 42, in _launch
+    prep_data = spawn.get_preparation_data(process_obj._name)
+  File "/Users/aspiriner/opt/anaconda3/envs/ai01/lib/python3.8/multiprocessing/spawn.py", line 154, in get_preparation_data
+    _check_not_importing_main()
+  File "/Users/aspiriner/opt/anaconda3/envs/ai01/lib/python3.8/multiprocessing/spawn.py", line 134, in _check_not_importing_main
+    raise RuntimeError('''
+RuntimeError:
+        An attempt has been made to start a new process before the
+        current process has finished its bootstrapping phase.
+        This probably means that you are not using fork to start your
+        child processes and you have forgotten to use the proper idiom
+        in the main module:
+            if __name__ == '__main__':
+                freeze_support()
+                ...
+        The "freeze_support()" line can be omitted if the program

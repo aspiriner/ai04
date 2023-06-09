@@ -1,0 +1,28 @@
+{
+    "os": "macOS-13.4-arm64-arm-64bit",
+    "python": "3.8.16",
+    "heartbeatAt": "2023-06-08T02:21:33.014864",
+    "startedAt": "2023-06-08T02:21:31.354105",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/Users/aspiriner/PycharmProjects/pythonProject1/TransforLearningPlus.py",
+    "codePath": "TransforLearningPlus.py",
+    "host": "aspiriners-MacBook-Air.local",
+    "username": "aspiriner",
+    "executable": "/Users/aspiriner/opt/anaconda3/envs/ai01/bin/python",
+    "cpu_count": 8,
+    "cpu_count_logical": 8,
+    "disk": {
+        "total": 460.4317207336426,
+        "used": 8.44406509399414
+    },
+    "gpuapple": {
+        "type": "arm",
+        "vendor": "Apple"
+    },
+    "memory": {
+        "total": 24.0
+    }
+}
