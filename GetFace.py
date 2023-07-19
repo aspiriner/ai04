@@ -7,13 +7,13 @@ import mmcv
 
 def CatchPICFromVideo(window_name, camera_idx, catch_pic_num, path_name):
     cv2.namedWindow(window_name)
-    temp_out_dir = "photo06"
+    temp_out_dir = "photo10"
     #os.rmdir(temp_out_dir)
     os.mkdir(temp_out_dir)
 
     print('创建文件夹 {} 用于存放每帧预测结果'.format(temp_out_dir))
     #视频来源，可以来自一段已存好的视频，也可以直接来自USB摄像头
-    cap = cv2.VideoCapture('/Users/aspiriner/Documents/工作文件/华师大/图像识别与骨架分析/原视频.nosync/IMG_3068.MOV')
+    cap = cv2.VideoCapture('/Users/aspiriner/Documents/工作文件/华师大/图像识别与骨架分析/原视频.nosync/IMG_0011.MOV')
     #prog_bar = mmcv.ProgressBar(10000000)
 
     #告诉OpenCV使用人脸识别分类器
@@ -29,7 +29,7 @@ def CatchPICFromVideo(window_name, camera_idx, catch_pic_num, path_name):
         i = i + 1
         #print(i)
         ok, frame = cap.read()  # 读取一帧数据
-        if i == 300 :
+        if i == 30 :
             i = 0
             idx = idx + 1
             if not ok:
@@ -38,7 +38,7 @@ def CatchPICFromVideo(window_name, camera_idx, catch_pic_num, path_name):
             grey = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)  #将当前桢图像转换成灰度图像
 
             #人脸检测，1.2和2分别为图片缩放比例和需要检测的有效点数
-            faceRects = classfier.detectMultiScale(grey, scaleFactor = 1.2, minNeighbors = 3, minSize = (170, 170), maxSize = (300,300))
+            faceRects = classfier.detectMultiScale(grey, scaleFactor = 1.5, minNeighbors = 4, minSize = (120, 120), maxSize = (270,270))
             if len(faceRects) > 0:          #大于0则检测到人脸
                 for faceRect in faceRects:  #单独框出每一张人脸
                     x, y, w, h = faceRect

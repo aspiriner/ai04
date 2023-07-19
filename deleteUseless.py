@@ -20,7 +20,7 @@ for i in `find . -iname '.ipynb_checkpoints'`; do rm -rf $i;done
 https://zihao-openmmlab.obs.cn-east-3.myhuaweicloud.com/20220716-mmclassification/dataset/dataset_delete_test.zip
 """
 
-dataset_path = 'fruit81_full'
+dataset_path = 'data'
 #删除gif格式的图像文件
 for fruit in tqdm(os.listdir(dataset_path)):
     for file in os.listdir(os.path.join(dataset_path, fruit)):
