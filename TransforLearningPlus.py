@@ -33,7 +33,7 @@ if __name__ == '__main__':
 
     # 获取计算硬件
     # 有 GPU 就用 GPU，没有就用 CPU
-    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cuda:0' if torch.cuda.is_available() else 'mps')
     print('device', device)
 
     from torchvision import transforms
@@ -54,7 +54,7 @@ if __name__ == '__main__':
                                              std=[0.229, 0.224, 0.225])
                                         ])
 
-    dataset_dir = 'data'
+    dataset_dir = 'fer_split'
 
     train_path = os.path.join(dataset_dir, 'train')
     test_path = os.path.join(dataset_dir, 'val')
@@ -84,7 +84,7 @@ if __name__ == '__main__':
 
     from torch.utils.data import DataLoader
 
-    BATCH_SIZE = 32
+    BATCH_SIZE = 12
 
     # 训练集的数据加载器
     train_loader = DataLoader(train_dataset,
@@ -100,12 +100,10 @@ if __name__ == '__main__':
                              num_workers=4
                             )
 
-    model = models.resnet18(pretrained=True) # 载入预训练模型
-    # 修改全连接层，使得全连接层的输出与当前数据集类别数对应
-    # 新建的层默认 requires_grad=True
+    ## 选择二：微调训练所有层
+    model = models.resnet50(pretrained=True) # 载入预训练模型
     model.fc = nn.Linear(model.fc.in_features, n_class)
-    # 只微调训练最后一层全连接层的参数，其它层冻结
-    optimizer = optim.Adam(model.fc.parameters())
+    optimizer = optim.Adam(model.parameters())
 
     model = model.to(device)
 
@@ -114,15 +112,15 @@ if __name__ == '__main__':
     # # 为每个批次元素的损失指定的手动重新缩放权重，
     # # 如果你的训练样本很不均衡的话，是非常有用的。默认值为 None。
     # criterion = nn.BCEWithLogitsLoss(pos_weight=weights).cuda()
-    weights =torch.FloatTensor([8,15,8,1,15])
+    #weights =torch.FloatTensor([8,15,8,1,15])
     # 交叉熵损失函数
-    criterion = nn.CrossEntropyLoss(weight=weights)
+    criterion = nn.CrossEntropyLoss()
 
     # 训练轮次 Epoch
-    EPOCHS = 30
+    EPOCHS = 90
 
     # 学习率降低策略
-    lr_scheduler = lr_scheduler.StepLR(optimizer, step_size=5, gamma=0.1)
+    lr_scheduler = lr_scheduler.StepLR(optimizer, step_size=30, gamma=0.1)
 
 
     def train_one_batch(images, labels):

@@ -3,7 +3,7 @@ import shutil
 import random
 import pandas as pd
 
-dataset_path = 'fruit81_full'
+dataset_path = 'fer_ckplus'
 
 dataset_name = dataset_path.split('_')[0]
 #print('数据集', dataset_name)
@@ -61,12 +61,12 @@ for fruit in classes:  # 遍历每个类别
     print('{:^18} {:^18} {:^18}'.format(fruit, len(trainset_images), len(testset_images)))
 
     # 保存到表格中
-    df = df.append({'class': fruit, 'trainset': len(trainset_images), 'testset': len(testset_images)},
-                   ignore_index=True)
-df = pd.DataFrame(df)
+    #df = df.append({'class': fruit, 'trainset': len(trainset_images), 'testset': len(testset_images)},
+    #               ignore_index=True)
+#df = pd.DataFrame(df)
 # 重命名数据集文件夹
 shutil.move(dataset_path, dataset_name + '_split')
 
 # 数据集各类别数量统计表格，导出为 csv 文件
-df['total'] = df['trainset'] + df['testset']
-df.to_csv('数据量统计.csv', index=False)
+#df['total'] = df['trainset'] + df['testset']
+#df.to_csv('数据量统计.csv', index=False)
